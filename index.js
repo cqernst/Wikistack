@@ -20,11 +20,14 @@ app.use('/wiki', require('./routes/wiki'));
 app.use('/user', require('./routes/user'));
 
 app.get('/', (req, res) => {
-	res.send('working');
+    Page.findAll()
+        .then(function(result){
+            res.render()
+        })
 })
 
 
-models.db.sync({force: true})//if  uptade model
+models.db.sync()//if  uptade model
 .then(function () {
     console.log('All tables created!');
     app.listen(3000, function () {
